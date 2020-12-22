@@ -8,7 +8,7 @@ import com.andre.agel.sessiontime.data.repository.MovieRepository
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.movie_details)
     }
 
 }
