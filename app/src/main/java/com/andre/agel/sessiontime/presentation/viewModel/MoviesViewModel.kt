@@ -21,6 +21,10 @@ class MoviesViewModel(
         return repository.getLatestMovie()
     }
 
+    fun getNowPlayingMovies(): MutableLiveData<List<Movie>> {
+        return repository.getNowPlayingMovies()
+    }
+
     fun getUpcomingMovies(): MutableLiveData<List<Movie>> {
         return repository.getUpcomingMovies()
     }

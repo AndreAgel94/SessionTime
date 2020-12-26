@@ -13,8 +13,13 @@ import retrofit2.Response
 
 class MovieRepository {
 
-    val moviesLivedata: MutableLiveData<List<Movie>> = MutableLiveData()
-    val movieLD: MutableLiveData<Movie> = MutableLiveData()
+
+    val movieDetailsLD: MutableLiveData<Movie> = MutableLiveData()
+    val moviesTopRatedLD: MutableLiveData<List<Movie>> = MutableLiveData()
+    val movieLatestLD: MutableLiveData<Movie> = MutableLiveData()
+    val moviesUpcomingLD: MutableLiveData<List<Movie>> = MutableLiveData()
+    val moviesPopularLD: MutableLiveData<List<Movie>> = MutableLiveData()
+    val moviesPlayngLD: MutableLiveData<List<Movie>> = MutableLiveData()
 
     fun getMovieDetails(): MutableLiveData<Movie> {
         GlobalScope.launch {
@@ -22,9 +27,7 @@ class MovieRepository {
                 override fun onResponse(call: Call<Movie>, response: Response<Movie>) {
                     if (response.isSuccessful) {
                         response.body().let {
-                            movieLD.value = it
-                            Log.i("testeXXX", it.toString())
-
+                            movieDetailsLD.value = it
                         }
                     }
                 }
@@ -35,7 +38,7 @@ class MovieRepository {
             })
         }
 
-        return movieLD
+        return movieDetailsLD
     }
 
     fun getTopRatedMovies(): MutableLiveData<List<Movie>> {
@@ -48,8 +51,7 @@ class MovieRepository {
                     if (response.isSuccessful) {
                         response.body().let {
                             if (it != null) {
-                                moviesLivedata.value = it.results
-                                Log.i("teste", it.results.size.toString())
+                                moviesTopRatedLD.value = it.results
                             }
                         }
                     }
@@ -62,7 +64,7 @@ class MovieRepository {
             })
         }
 
-        return moviesLivedata
+        return moviesTopRatedLD
     }
 
     fun getLatestMovie(): MutableLiveData<Movie> {
@@ -71,9 +73,7 @@ class MovieRepository {
                 override fun onResponse(call: Call<Movie>, response: Response<Movie>) {
                     if (response.isSuccessful) {
                         response.body().let {
-                            movieLD.value = it
-                            Log.i("teste", it.toString())
-
+                            movieLatestLD.value = it
                         }
                     }
                 }
@@ -83,7 +83,7 @@ class MovieRepository {
                 }
             })
         }
-        return movieLD
+        return movieLatestLD
     }
 
     fun getUpcomingMovies(): MutableLiveData<List<Movie>> {
@@ -96,8 +96,8 @@ class MovieRepository {
                     if (response.isSuccessful) {
                         response.body().let {
                             if (it != null) {
-                                moviesLivedata.value = it.results
-                                Log.i("teste2", it.results.size.toString())
+                                moviesUpcomingLD.value = it.results
+                                Log.i("testeupcoming", it.results.toString())
 
                             }
                         }
@@ -111,7 +111,7 @@ class MovieRepository {
             })
         }
 
-        return moviesLivedata
+        return moviesUpcomingLD
     }
 
     fun getPupularMovies(): MutableLiveData<List<Movie>> {
@@ -124,7 +124,7 @@ class MovieRepository {
                     if (response.isSuccessful) {
                         response.body().let {
                             if (it != null) {
-                                moviesLivedata.value = it.results
+                                moviesPopularLD.value = it.results
                                 Log.i("teste3", it.results.size.toString())
 
                             }
@@ -139,7 +139,7 @@ class MovieRepository {
             })
         }
 
-        return moviesLivedata
+        return moviesPopularLD
     }
 
     fun getNowPlayingMovies(): MutableLiveData<List<Movie>> {
@@ -152,7 +152,7 @@ class MovieRepository {
                     if (response.isSuccessful) {
                         response.body().let {
                             if (it != null) {
-                                moviesLivedata.value = it.results
+                                moviesPlayngLD.value = it.results
                                 Log.i("teste4", it.results.size.toString())
 
                             }
@@ -167,6 +167,6 @@ class MovieRepository {
             })
         }
 
-        return moviesLivedata
+        return moviesPlayngLD
     }
 }

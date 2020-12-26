@@ -13,6 +13,7 @@ val viewModelModule = module {
             MovieRepository()
         )
     }
+    factory { MovieRepository() }
 
 }
 
