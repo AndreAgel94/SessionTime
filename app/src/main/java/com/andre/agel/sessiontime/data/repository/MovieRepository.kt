@@ -2,14 +2,17 @@ package com.andre.agel.sessiontime.data.repository
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
+import com.andre.agel.sessiontime.data.model.Actor
 import com.andre.agel.sessiontime.data.model.Movie
-import com.andre.agel.sessiontime.data.model.MovieResponse
+import com.andre.agel.sessiontime.data.network.response.MovieResponse
 import com.andre.agel.sessiontime.data.network.ApiService
+import com.andre.agel.sessiontime.data.network.response.MovieCreditsResponse
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import kotlin.math.log
 
 class MovieRepository {
 
@@ -20,10 +23,11 @@ class MovieRepository {
     val moviesUpcomingLD: MutableLiveData<List<Movie>> = MutableLiveData()
     val moviesPopularLD: MutableLiveData<List<Movie>> = MutableLiveData()
     val moviesPlayngLD: MutableLiveData<List<Movie>> = MutableLiveData()
+    val movieActorsLD : MutableLiveData<List<Actor>> = MutableLiveData()
 
-    fun getMovieDetails(): MutableLiveData<Movie> {
+    fun getMovieDetails(id : Int): MutableLiveData<Movie> {
         GlobalScope.launch {
-            ApiService.services.getMovieDetails(100).enqueue(object : Callback<Movie> {
+            ApiService.services.getMovieDetails(id).enqueue(object : Callback<Movie> {
                 override fun onResponse(call: Call<Movie>, response: Response<Movie>) {
                     if (response.isSuccessful) {
                         response.body().let {
@@ -168,5 +172,33 @@ class MovieRepository {
         }
 
         return moviesPlayngLD
+    }
+
+    fun getMovieActors(): MutableLiveData<List<Actor>> {
+        GlobalScope.launch {
+            ApiService.services.getMovieCredits(100).enqueue(object : Callback<MovieCreditsResponse> {
+                override fun onResponse(
+                    call: Call<MovieCreditsResponse>,
+                    response: Response<MovieCreditsResponse>
+                ) {
+                    if (response.isSuccessful){
+                        response.body().let {
+                            if (it != null) {
+                                movieActorsLD.value = it.cast
+                                Log.i("Actors" , it.cast.toString())
+                            }
+                        }
+                    }
+                }
+
+                override fun onFailure(call: Call<MovieCreditsResponse>, t: Throwable) {
+                    TODO("Not yet implemented")
+                }
+
+
+            })
+        }
+
+        return movieActorsLD
     }
 }

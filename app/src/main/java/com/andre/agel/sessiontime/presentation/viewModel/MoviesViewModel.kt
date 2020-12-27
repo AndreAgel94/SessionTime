@@ -9,9 +9,7 @@ class MoviesViewModel(
     private val repository: MovieRepository
 ) : ViewModel() {
 
-    fun getMovieDetails(): MutableLiveData<Movie> {
-        return repository.getMovieDetails()
-    }
+
 
    fun getTopRatedMovies(): MutableLiveData<List<Movie>> {
         return repository.getTopRatedMovies()

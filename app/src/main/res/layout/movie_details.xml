@@ -47,6 +47,8 @@
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:orientation="horizontal"
+        tools:listitem="@layout/item_elenco"
         tools:layout_editor_absoluteX="186dp"
         tools:layout_editor_absoluteY="538dp" />
 

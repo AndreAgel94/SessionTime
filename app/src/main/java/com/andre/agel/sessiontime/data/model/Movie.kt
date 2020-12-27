@@ -7,7 +7,7 @@ data class Movie (
 
     val genre_ids: List<Long>,
 
-    val id: Long,
+    val id: Int,
 
     val original_language: String,
 

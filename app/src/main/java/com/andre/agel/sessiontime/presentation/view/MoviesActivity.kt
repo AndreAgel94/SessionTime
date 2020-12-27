@@ -7,6 +7,7 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.andre.agel.sessiontime.R
+import com.andre.agel.sessiontime.presentation.view.adapter.MovieAdapter
 import com.andre.agel.sessiontime.presentation.viewModel.MoviesViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -30,6 +31,8 @@ class MoviesActivity : AppCompatActivity() {
 
                     adapter = MovieAdapter(it){
                         Log.i("TestingUnit",it.poster_path)
+                        val intent = MovieDetailsActivity.getStartIntent(this@MoviesActivity, it.id)
+                        this@MoviesActivity.startActivity(intent)
                     }
 
                 }
@@ -47,6 +50,8 @@ class MoviesActivity : AppCompatActivity() {
 
                     adapter = MovieAdapter(it){
                         Log.i("TestingUnit",it.poster_path)
+                        val intent = MovieDetailsActivity.getStartIntent(this@MoviesActivity, it.id)
+                        this@MoviesActivity.startActivity(intent)
                     }
 
                 }
@@ -64,6 +69,8 @@ class MoviesActivity : AppCompatActivity() {
 
                     adapter = MovieAdapter(it){
                         Log.i("TestingUnit",it.poster_path)
+                        val intent = MovieDetailsActivity.getStartIntent(this@MoviesActivity, it.id)
+                        this@MoviesActivity.startActivity(intent)
                     }
 
                 }
@@ -81,6 +88,8 @@ class MoviesActivity : AppCompatActivity() {
 
                     adapter = MovieAdapter(it){
                         Log.i("TestingUnit",it.poster_path)
+                        val intent = MovieDetailsActivity.getStartIntent(this@MoviesActivity, it.id)
+                        this@MoviesActivity.startActivity(intent)
                     }
 
                 }

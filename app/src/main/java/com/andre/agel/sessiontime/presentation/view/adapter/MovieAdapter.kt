@@ -1,4 +1,4 @@
-package com.andre.agel.sessiontime.presentation.view
+package com.andre.agel.sessiontime.presentation.view.adapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -17,7 +17,7 @@ class MovieAdapter(
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): MovieAdapter.MoviesViewHolder {
+    ): MoviesViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.item_recycler_list_img,parent,false)
 
         return MoviesViewHolder(itemView,OnItemClickListener)
@@ -27,7 +27,7 @@ class MovieAdapter(
         return movieList.size
     }
 
-    override fun onBindViewHolder(holder: MovieAdapter.MoviesViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: MoviesViewHolder, position: Int) {
         holder.bind(movieList[position])
     }
 

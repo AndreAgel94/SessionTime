@@ -1,4 +1,6 @@
-package com.andre.agel.sessiontime.data.model
+package com.andre.agel.sessiontime.data.network.response
+
+import com.andre.agel.sessiontime.data.model.Movie
 
 data class MovieResponse (
     val page: Int,
