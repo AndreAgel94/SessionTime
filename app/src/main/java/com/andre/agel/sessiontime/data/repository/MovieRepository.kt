@@ -174,9 +174,9 @@ class MovieRepository {
         return moviesPlayngLD
     }
 
-    fun getMovieActors(): MutableLiveData<List<Actor>> {
+    fun getMovieActors(id : Int): MutableLiveData<List<Actor>> {
         GlobalScope.launch {
-            ApiService.services.getMovieCredits(100).enqueue(object : Callback<MovieCreditsResponse> {
+            ApiService.services.getMovieCredits(id).enqueue(object : Callback<MovieCreditsResponse> {
                 override fun onResponse(
                     call: Call<MovieCreditsResponse>,
                     response: Response<MovieCreditsResponse>

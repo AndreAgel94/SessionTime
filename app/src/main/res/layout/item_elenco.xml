@@ -11,11 +11,12 @@
         android:layout_width="@dimen/default_size_100_dp"
         android:layout_height="@dimen/default_size_100_dp"
         android:layout_marginStart="@dimen/default_size_8_dp"
+        android:layout_marginEnd="@dimen/default_size_8_dp"
         android:elevation="10dp"
         app:cardCornerRadius="50dp">
 
         <ImageView
-            android:id="@+id/roundedImageView"
+            android:id="@+id/roundedImageViewActor"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/white"
@@ -24,6 +25,7 @@
     </androidx.cardview.widget.CardView>
 
     <TextView
+        android:id="@+id/textActorName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/default_size_8_dp"
@@ -31,17 +33,13 @@
         tools:text="Gal Gadot" />
 
     <TextView
+        android:id="@+id/textActorRole"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/default_size_8_dp"
         android:textAlignment="center"
         tools:text="Wonder Women" />
 
-    <RatingBar
-        android:id="@+id/ratingBar2"
-        style="@style/Widget.AppCompat.RatingBar.Small"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:isIndicator="false" />
+
 
 </LinearLayout>

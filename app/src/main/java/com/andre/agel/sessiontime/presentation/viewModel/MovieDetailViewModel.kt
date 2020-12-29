@@ -14,7 +14,7 @@ class MovieDetailViewModel(
         return repository.getMovieDetails(id)
     }
 
-    fun getMovieActors(): MutableLiveData<List<Actor>> {
-        return repository.getMovieActors()
+    fun getMovieActors(id: Int): MutableLiveData<List<Actor>> {
+        return repository.getMovieActors(id)
     }
 }

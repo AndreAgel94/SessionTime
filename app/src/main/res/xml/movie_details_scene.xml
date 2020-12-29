@@ -16,54 +16,54 @@
             android:layout_height="400dp"
             android:layout_width="match_parent"
             motion:layout_constraintStart_toStartOf="parent"
-            android:id="@+id/imageView"
+            android:id="@+id/MoviePoster"
             motion:layout_constraintTop_toTopOf="parent"
             motion:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="0dp" />
+            android:layout_marginTop="0dp"
+            motion:layout_constraintHorizontal_bias="0.0" />
         <Constraint
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             motion:layout_constraintStart_toStartOf="parent"
-            android:id="@+id/textView"
+            android:id="@+id/textViewGenreDate"
             motion:layout_constraintEnd_toEndOf="parent"
-            motion:layout_constraintBottom_toBottomOf="@+id/imageView" />
+            motion:layout_constraintBottom_toBottomOf="@+id/MoviePoster" />
         <Constraint
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            motion:layout_constraintStart_toStartOf="@+id/imageView"
-            android:id="@+id/textView2"
+            motion:layout_constraintStart_toStartOf="@+id/MoviePoster"
+            android:id="@+id/movieTitleDetails"
             motion:layout_constraintEnd_toEndOf="parent"
-            motion:layout_constraintBottom_toTopOf="@+id/textView" />
+            motion:layout_constraintBottom_toTopOf="@+id/textViewGenreDate" />
         <Constraint
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             motion:layout_constraintStart_toStartOf="parent"
-            android:id="@+id/ratingBar"
+            android:id="@+id/ratingBarDetails"
             motion:layout_constraintEnd_toEndOf="parent"
-            motion:layout_constraintTop_toBottomOf="@+id/imageView"
+            motion:layout_constraintTop_toBottomOf="@+id/MoviePoster"
             motion:layout_constraintHorizontal_bias="0.497" />
         <Constraint
             android:layout_height="wrap_content"
             android:layout_width="0dp"
-            motion:layout_constraintTop_toBottomOf="@+id/ratingBar"
-            android:id="@+id/textView3"
+            motion:layout_constraintTop_toBottomOf="@+id/ratingBarDetails"
+            android:id="@+id/textMovieDescription"
             motion:layout_constraintStart_toStartOf="parent"
             motion:layout_constraintEnd_toEndOf="parent" />
         <Constraint
             android:layout_height="wrap_content"
             android:layout_width="0dp"
-            android:id="@+id/recyclerView"
-            motion:layout_constraintTop_toBottomOf="@+id/textView4"
+            android:id="@+id/rcActors"
+            motion:layout_constraintTop_toBottomOf="@+id/textViewCast"
             motion:layout_constraintStart_toStartOf="parent"
             motion:layout_constraintEnd_toEndOf="parent" />
         <Constraint
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            motion:layout_constraintTop_toBottomOf="@+id/textView3"
-            android:id="@+id/textView4"
+            motion:layout_constraintTop_toBottomOf="@+id/textMovieDescription"
+            android:id="@+id/textViewCast"
             motion:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="16dp"
-            motion:layout_constraintEnd_toEndOf="parent" />
+            android:layout_marginTop="16dp" />
     </ConstraintSet>
 
     <ConstraintSet android:id="@+id/end">

@@ -2,41 +2,47 @@
 <androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/project_background"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layoutDescription="@xml/movie_details_scene">
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/MoviePoster"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/capitamarvel"
         android:src="@drawable/degrade_view_details" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/textViewGenreDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
+        android:textSize="16sp"
+        android:textColor="@color/white"
         tools:layout_editor_absoluteX="228dp"
         tools:layout_editor_absoluteY="168dp" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/movieTitleDetails"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        android:textColor="@color/white"
         tools:layout_editor_absoluteX="174dp"
         tools:layout_editor_absoluteY="203dp" />
 
     <RatingBar
-        android:id="@+id/ratingBar"
+        android:id="@+id/ratingBarDetails"
         android:layout_width="wrap_content"
         style="@android:style/Widget.Holo.RatingBar.Indicator"
         android:layout_height="wrap_content" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/textMovieDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
@@ -44,7 +50,7 @@
         tools:layout_editor_absoluteY="522dp" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
+        android:id="@+id/rcActors"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
@@ -53,10 +59,12 @@
         tools:layout_editor_absoluteY="538dp" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/textViewCast"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        android:text="Cast"
+        android:textSize="16sp"
+        android:textColor="@color/white"
         tools:layout_editor_absoluteX="144dp"
         tools:layout_editor_absoluteY="532dp" />
 </androidx.constraintlayout.motion.widget.MotionLayout>

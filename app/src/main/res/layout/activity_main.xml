@@ -8,32 +8,33 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content"
+        android:background="@color/project_background">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvPopularMovies"
             android:layout_width="0dp"
-            android:layout_height="200dp"
-            android:layout_marginTop="100dp"
+            android:layout_height="220dp"
+            android:layout_marginTop="55dp"
             android:orientation="horizontal"
-            tools:listitem="@layout/item_recycler_list_img"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:listitem="@layout/item_recycler_list_img" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rcUpcomingMovies"
             android:layout_width="0dp"
-            android:layout_height="200dp"
+            android:layout_height="220dp"
             android:layout_marginTop="64dp"
             android:orientation="horizontal"
-            tools:listitem="@layout/item_recycler_list_img"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/rvPopularMovies" />
+            app:layout_constraintTop_toBottomOf="@+id/rvPopularMovies"
+            tools:listitem="@layout/item_recycler_list_img" />
 
         <TextView
             android:id="@+id/tvUpcomingMovies"
@@ -43,6 +44,9 @@
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
             android:text="Upcoming Movies"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/rcUpcomingMovies"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/rvPopularMovies" />
@@ -55,6 +59,9 @@
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
             android:text="Top Rated Movies"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/rcTopRated"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/rcUpcomingMovies" />
@@ -62,28 +69,28 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rcTopRated"
             android:layout_width="0dp"
-            android:layout_height="200dp"
+            android:layout_height="220dp"
             android:layout_marginTop="64dp"
             android:orientation="horizontal"
-            tools:listitem="@layout/item_recycler_list_img"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/rcUpcomingMovies" />
+            app:layout_constraintTop_toBottomOf="@+id/rcUpcomingMovies"
+            tools:listitem="@layout/item_recycler_list_img" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rcNowPlaying"
             android:layout_width="0dp"
-            android:layout_height="200dp"
+            android:layout_height="220dp"
             android:layout_marginTop="64dp"
             android:orientation="horizontal"
-            tools:listitem="@layout/item_recycler_list_img"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/rcTopRated" />
+            app:layout_constraintTop_toBottomOf="@+id/rcTopRated"
+            tools:listitem="@layout/item_recycler_list_img" />
 
         <TextView
             android:id="@+id/tvNowPlayng"
@@ -93,6 +100,9 @@
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
             android:text="Now on theaters"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/rcNowPlaying"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/rcTopRated" />
@@ -102,23 +112,26 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginBottom="16dp"
             android:text="Popular Movies"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/rvPopularMovies"
             app:layout_constraintStart_toStartOf="parent" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rcLatest"
             android:layout_width="0dp"
-            android:layout_height="200dp"
+            android:layout_height="220dp"
             android:layout_marginTop="64dp"
             android:orientation="horizontal"
-            tools:listitem="@layout/item_recycler_list_img"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/rcNowPlaying" />
+            app:layout_constraintTop_toBottomOf="@+id/rcNowPlaying"
+            tools:listitem="@layout/item_recycler_list_img" />
 
         <TextView
             android:id="@+id/tvLatestMovie"
@@ -128,6 +141,9 @@
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
             android:text="Latest"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/rcLatest"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/rcNowPlaying" />
