@@ -2,6 +2,9 @@
 
 ## Fique por dentro dos filmes mais populares, recentes e bem avaliados do mundo do cinema, avalie e favorite  
 
+![Session_Time1](https://github.com/AndreAgel94/SessionTime/blob/dev/app/src/main/res/drawable/4.gif)
+
+
 ### Projeto
 O usuário pode ver uma lista dos filmes mais populares, atuais e bem avaliados do cinema, escolhendo
 um filme ele pode saber mais informação sobre, como sua sinopse, avaliação e elenco, podendo favoritar o filme,
