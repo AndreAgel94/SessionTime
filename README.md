@@ -2,8 +2,10 @@
 
 ## Fique por dentro dos filmes mais populares, recentes e bem avaliados do mundo do cinema, avalie e favorite  
 
-![Session_Time1](https://github.com/AndreAgel94/SessionTime/blob/dev/app/src/main/res/drawable/4.gif)
-
+<p float="left">
+  <img src="https://github.com/AndreAgel94/SessionTime/blob/dev/app/src/main/res/drawable/5.gif"/>
+  <img src="https://github.com/AndreAgel94/SessionTime/blob/dev/app/src/main/res/drawable/4.gif"/> 
+</p>
 
 ### Projeto
 O usuário pode ver uma lista dos filmes mais populares, atuais e bem avaliados do cinema, escolhendo
