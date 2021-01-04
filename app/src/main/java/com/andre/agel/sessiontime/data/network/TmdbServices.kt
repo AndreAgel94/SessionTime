@@ -13,6 +13,15 @@ interface TmdbServices {
 
     //BASE_URL https://api.themoviedb.org/3/
 
+    //get the recommendations for a movie
+    @GET("movie/{movie_id}/recommendations")
+    fun getMoviesRecommendations(
+        @Path("movie_id") movie_id : Int,
+        @Query("api_key") api_key : String = API_KEY,
+        @Query("language") language : String = "en-US",
+        @Query("page") page : Int = 1,
+    ): Call<MovieResponse>
+
     //get now playing movies
     @GET("movie/now_playing")
     fun getNowPlayingMovies(

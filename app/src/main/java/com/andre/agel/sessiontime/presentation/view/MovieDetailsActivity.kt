@@ -9,6 +9,7 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.andre.agel.sessiontime.R
+import com.andre.agel.sessiontime.presentation.view.adapter.MovieAdapter
 import com.andre.agel.sessiontime.presentation.view.adapter.MovieDetailsAdapter
 import com.andre.agel.sessiontime.presentation.viewModel.MovieDetailViewModel
 import com.bumptech.glide.Glide
@@ -60,7 +61,32 @@ class MovieDetailsActivity : AppCompatActivity() {
            // ratingBarDetails.stepSize = ratingValue
 
         })
+
+        viewModel.getMoviesRecommendations(id).observe(this, Observer {
+            it.let {
+                with(rcRelatedMovies) {
+                    layoutManager = LinearLayoutManager(
+                        this@MovieDetailsActivity,
+                        RecyclerView.HORIZONTAL,
+                        false
+                    )
+                    setHasFixedSize(true)
+
+                    adapter = MovieAdapter(it) {
+                        // TODO: 29/12/20  call details activity again (recursion)
+                        //val intent = MovieDetailsActivity.getStartIntent(this@MovieDetailsActivity,id)
+
+
+                    }
+                }
+            }
+        })
+
+//        star_button.setOnClickListener {
+//
+//        }
     }
+
     companion object {
         private const val EXTRA_ID = "EXTRA_ID"
         fun getStartIntent(context: Context, id : Int): Intent {

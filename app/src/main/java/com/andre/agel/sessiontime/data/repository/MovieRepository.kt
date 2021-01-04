@@ -1,5 +1,6 @@
 package com.andre.agel.sessiontime.data.repository
 
+import android.provider.Settings
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.andre.agel.sessiontime.data.model.Actor
@@ -23,6 +24,7 @@ class MovieRepository {
     val moviesUpcomingLD: MutableLiveData<List<Movie>> = MutableLiveData()
     val moviesPopularLD: MutableLiveData<List<Movie>> = MutableLiveData()
     val moviesPlayngLD: MutableLiveData<List<Movie>> = MutableLiveData()
+    val moviesRecommended: MutableLiveData<List<Movie>> = MutableLiveData()
     val movieActorsLD : MutableLiveData<List<Actor>> = MutableLiveData()
 
     fun getMovieDetails(id : Int): MutableLiveData<Movie> {
@@ -174,6 +176,32 @@ class MovieRepository {
         return moviesPlayngLD
     }
 
+    fun getMoviesRecommendations(id: Int) : MutableLiveData<List<Movie>>{
+        GlobalScope.launch {
+            ApiService.services.getMoviesRecommendations(id).enqueue(object : Callback<MovieResponse>{
+                override fun onResponse(
+                    call: Call<MovieResponse>,
+                    response: Response<MovieResponse>
+                ) {
+                    if (response.isSuccessful){
+                        response.body().let {
+                            if (it != null) {
+                                moviesRecommended.value = it.results
+                                Log.i("recomended" , it.results.toString())
+                            }
+                        }
+                    }
+                }
+
+                override fun onFailure(call: Call<MovieResponse>, t: Throwable) {
+                    TODO("Not yet implemented")
+                }
+
+            })
+        }
+        return moviesRecommended
+    }
+
     fun getMovieActors(id : Int): MutableLiveData<List<Actor>> {
         GlobalScope.launch {
             ApiService.services.getMovieCredits(id).enqueue(object : Callback<MovieCreditsResponse> {
@@ -185,7 +213,7 @@ class MovieRepository {
                         response.body().let {
                             if (it != null) {
                                 movieActorsLD.value = it.cast
-                                Log.i("Actors" , it.cast.toString())
+
                             }
                         }
                     }

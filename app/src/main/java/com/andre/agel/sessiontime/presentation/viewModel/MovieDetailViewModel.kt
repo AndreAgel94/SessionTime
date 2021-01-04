@@ -17,4 +17,8 @@ class MovieDetailViewModel(
     fun getMovieActors(id: Int): MutableLiveData<List<Actor>> {
         return repository.getMovieActors(id)
     }
+
+    fun getMoviesRecommendations(id: Int): MutableLiveData<List<Movie>> {
+        return repository.getMoviesRecommendations(id)
+    }
 }

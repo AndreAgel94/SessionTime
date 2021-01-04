@@ -20,7 +20,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/capitamarvel" />
+        tools:background="@drawable/capitamarvel"
+        />
 
         <TextView
             android:id="@+id/textViewDetailsTitle"
@@ -29,10 +30,14 @@
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="32dp"
-            android:text="Wonder Women"
+            tools:text="Wonder Woman"
             android:textColor="@color/white"
             android:textSize="24sp"
             android:textStyle="bold"
+            android:shadowColor="@color/black"
+            android:shadowDx="1.0"
+            android:shadowDy="1.0"
+            android:shadowRadius="8"
             app:layout_constraintBottom_toBottomOf="@+id/imageViewDetails"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
@@ -41,17 +46,34 @@
         android:id="@+id/textViewDetailsDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        tools:text="Date"
         android:textColor="@color/white"
         android:textStyle="bold"
-
+        android:shadowColor="@color/black"
+        android:shadowDx="1.0"
+        android:shadowDy="1.0"
+        android:shadowRadius="8"
         app:layout_constraintBottom_toBottomOf="@+id/imageViewDetails"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewDetailsTitle" />
 
 
-    <RatingBar
+        <com.like.LikeButton
+            android:id="@+id/star_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="13dp"
+            app:icon_size="10dp"
+            app:icon_type="heart"
+            app:layout_constraintStart_toEndOf="@+id/ratingBarDetails"
+            app:layout_constraintTop_toBottomOf="@+id/imageViewDetails"
+            app:anim_scale_factor="5"
+            app:liked="false"
+            />
+
+        <RatingBar
         android:id="@+id/ratingBarDetails"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -82,15 +104,12 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="8dp"
-            android:layout_marginBottom="16dp"
             android:orientation="horizontal"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView"
-            app:layout_constraintVertical_bias="0.0"
             tools:listitem="@layout/item_elenco" />
 
         <TextView
@@ -112,7 +131,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="17dp"
             android:layout_marginEnd="8dp"
-            android:text="textView"
+            tools:text="rate"
             android:textSize="16sp"
             android:textColor="@color/Rating_yellow"
             app:layout_constraintEnd_toStartOf="@+id/ratingBarDetails"
@@ -122,14 +141,16 @@
             android:id="@+id/textViewRelatedMovies"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/default_size_8_dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="8dp"
             android:text="Related Movies"
             android:textSize="18sp"
             android:textStyle="bold"
-            app:layout_constraintTop_toBottomOf="@+id/recyclerViewActors"
-            android:layout_marginTop="@dimen/default_size_16_dp"
-            android:layout_marginStart="@dimen/default_size_8_dp"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toTopOf="@id/textViewRelatedMovies"
             app:layout_constraintStart_toStartOf="parent"
-            />
+            app:layout_constraintTop_toBottomOf="@+id/recyclerViewActors" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rcRelatedMovies"
@@ -138,8 +159,8 @@
             android:orientation="horizontal"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:listitem="@layout/item_recycler_list_img"
-            app:layout_constraintTop_toBottomOf="@id/textViewRelatedMovies"
-            android:layout_marginTop="@dimen/default_size_16_dp"
+            app:layout_constraintTop_toBottomOf="@id/recyclerViewActors"
+            android:layout_marginTop="@dimen/default_size_64_dp"
             android:layout_marginStart="@dimen/default_size_8_dp"
             android:layout_marginEnd="@dimen/default_size_8_dp"
             app:layout_constraintStart_toStartOf="parent"

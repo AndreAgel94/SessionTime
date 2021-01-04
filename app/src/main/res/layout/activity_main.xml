@@ -11,6 +11,18 @@
         android:layout_height="wrap_content"
         android:background="@color/project_background">
 
+        <ImageView
+            android:id="@+id/imageLatestMovie"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:scaleType="centerCrop"
+            android:layout_marginBottom="@dimen/default_size_64_dp"
+            app:layout_constraintBottom_toTopOf="@+id/rvPopularMovies"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:background="@drawable/capitamarvel"
+            />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvPopularMovies"
             android:layout_width="0dp"
@@ -20,7 +32,7 @@
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/imageLatestMovie"
             tools:listitem="@layout/item_recycler_list_img" />
 
         <androidx.recyclerview.widget.RecyclerView
@@ -84,6 +96,7 @@
             android:layout_width="0dp"
             android:layout_height="220dp"
             android:layout_marginTop="64dp"
+            android:layout_marginEnd="32dp"
             android:orientation="horizontal"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintEnd_toEndOf="parent"
@@ -120,33 +133,41 @@
             app:layout_constraintBottom_toTopOf="@+id/rvPopularMovies"
             app:layout_constraintStart_toStartOf="parent" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rcLatest"
-            android:layout_width="0dp"
-            android:layout_height="220dp"
-            android:layout_marginTop="64dp"
-            android:orientation="horizontal"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/rcNowPlaying"
-            tools:listitem="@layout/item_recycler_list_img" />
-
         <TextView
-            android:id="@+id/tvLatestMovie"
+            android:id="@+id/textViewLatestTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
-            android:text="Latest"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="32dp"
+            android:textSize="24sp"
             android:textColor="@color/white"
-            android:textSize="18sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/rcLatest"
+            android:shadowColor="@color/black"
+            android:shadowDx="1.0"
+            android:shadowDy="1.0"
+            android:shadowRadius="8"
+            tools:text="Wonder Woman"
+            app:layout_constraintBottom_toBottomOf="@+id/imageLatestMovie"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/rcNowPlaying" />
+            />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Today in theaters"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:shadowColor="#04d9ff"
+            android:shadowDx="1.0"
+            android:shadowDy="1.0"
+            android:shadowRadius="8"
+            app:layout_constraintBottom_toBottomOf="@+id/imageLatestMovie"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewLatestTitle" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
