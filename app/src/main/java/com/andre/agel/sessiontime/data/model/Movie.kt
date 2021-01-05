@@ -1,12 +1,17 @@
 package com.andre.agel.sessiontime.data.model
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+@Entity(tableName = "movie")
 data class Movie (
     val adult: Boolean,
 
     val backdrop_path: String,
 
-    val genre_ids: List<Long>,
+   // val genre_ids: List<Long>,
 
+    @PrimaryKey
     val id: Int,
 
     val original_language: String,

@@ -33,6 +33,8 @@ android {
 }
 
 dependencies {
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+
     // Stable Koin Version
     def koin_version = "2.2.0"
     // Stable Room Version

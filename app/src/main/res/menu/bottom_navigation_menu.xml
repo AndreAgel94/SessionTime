@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/movieBottom"
+        android:enabled="true"
+        android:title="Movies" />
+
+
+    <item
+        android:id="@+id/favoritesBottom"
+        android:title="Favorites"
+        android:enabled="true"
+        />
+
+    <item
+        android:id="@+id/seriesBottom"
+        android:title="Series"
+        android:enabled="true"
+        />
+
+</menu>

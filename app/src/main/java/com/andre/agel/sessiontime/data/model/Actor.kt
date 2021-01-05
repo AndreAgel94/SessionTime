@@ -1,10 +1,15 @@
 package com.andre.agel.sessiontime.data.model
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+@Entity(tableName = "actor")
 data class Actor (
     val adult : Boolean,
 
     val gender : Int?,
 
+    @PrimaryKey
     val id : Int,
 
     val known_for_department : String,
@@ -13,7 +18,7 @@ data class Actor (
 
     val original_name : String,
 
-    val popularity : Number,
+    val popularity : Double,
 
     val profile_path : String?,
 

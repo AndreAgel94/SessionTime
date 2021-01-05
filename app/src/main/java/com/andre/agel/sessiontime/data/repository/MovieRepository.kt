@@ -3,6 +3,8 @@ package com.andre.agel.sessiontime.data.repository
 import android.provider.Settings
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
+import com.andre.agel.sessiontime.data.database.dao.ActorDao
+import com.andre.agel.sessiontime.data.database.dao.MovieDao
 import com.andre.agel.sessiontime.data.model.Actor
 import com.andre.agel.sessiontime.data.model.Movie
 import com.andre.agel.sessiontime.data.network.response.MovieResponse
@@ -15,8 +17,10 @@ import retrofit2.Callback
 import retrofit2.Response
 import kotlin.math.log
 
-class MovieRepository {
-
+class MovieRepository (
+    private val movieDao: MovieDao,
+    private val actorDao: ActorDao
+        ){
 
     val movieDetailsLD: MutableLiveData<Movie> = MutableLiveData()
     val moviesTopRatedLD: MutableLiveData<List<Movie>> = MutableLiveData()
@@ -26,6 +30,16 @@ class MovieRepository {
     val moviesPlayngLD: MutableLiveData<List<Movie>> = MutableLiveData()
     val moviesRecommended: MutableLiveData<List<Movie>> = MutableLiveData()
     val movieActorsLD : MutableLiveData<List<Actor>> = MutableLiveData()
+
+    fun saveMovieDB(movie: Movie){
+        GlobalScope.launch { movieDao.save(movie) }
+    }
+
+    fun saveActorDB(actor: Actor){
+        GlobalScope.launch { actorDao.save(actor) }
+    }
+
+    
 
     fun getMovieDetails(id : Int): MutableLiveData<Movie> {
         GlobalScope.launch {

@@ -10,6 +10,10 @@ class MovieDetailViewModel(
     private val repository: MovieRepository
 ) : ViewModel() {
 
+    fun saveMovieDB(movie: Movie){
+        repository.saveMovieDB(movie)
+    }
+
     fun getMovieDetails(id : Int): MutableLiveData<Movie> {
         return repository.getMovieDetails(id)
     }

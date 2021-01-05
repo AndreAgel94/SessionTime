@@ -36,7 +36,7 @@
         tools:layout_editor_absoluteY="203dp" />
 
     <RatingBar
-        android:id="@+id/ratingBarDetails"
+        android:id="@+id/ratingBarDetailsss"
         android:layout_width="wrap_content"
         style="@android:style/Widget.Holo.RatingBar.Indicator"
         android:layout_height="wrap_content" />

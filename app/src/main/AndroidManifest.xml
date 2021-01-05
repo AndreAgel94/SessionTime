@@ -15,14 +15,14 @@
         android:name=".di.MovieApplication"
         android:theme="@style/Theme.SessionTime"
         tools:ignore="HardcodedDebugMode">
-        <activity android:name=".presentation.view.MoviesActivity">
+        <activity android:name=".presentation.view.activities.MoviesActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".presentation.view.MovieDetailsActivity" />
+        <activity android:name=".presentation.view.activities.MovieDetailsActivity" />
     </application>
 
 </manifest>

@@ -1,14 +1,16 @@
-package com.andre.agel.sessiontime.presentation.view
+package com.andre.agel.sessiontime.presentation.view.activities
 
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.andre.agel.sessiontime.R
+import com.andre.agel.sessiontime.data.model.Movie
 import com.andre.agel.sessiontime.presentation.view.adapter.MovieAdapter
 import com.andre.agel.sessiontime.presentation.view.adapter.MovieDetailsAdapter
 import com.andre.agel.sessiontime.presentation.viewModel.MovieDetailViewModel
@@ -16,11 +18,12 @@ import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.activity_details.*
 import kotlinx.android.synthetic.main.movie_details.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import kotlinx.android.synthetic.main.movie_details.ratingBarDetails as ratingBarDetails1
 
 class MovieDetailsActivity : AppCompatActivity() {
 
     val viewModel : MovieDetailViewModel by viewModel()
+    lateinit var  movieFavorites : Movie
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,6 +55,8 @@ class MovieDetailsActivity : AppCompatActivity() {
             textViewDetailsTitle.text = movie.title
             textViewMovieDescription.text = movie.overview
 
+            this@MovieDetailsActivity.movieFavorites = movie
+
             //Rating bar
             val ratingValue : Float = movie.vote_average / 2
             ratingBarDetails.numStars = 5
@@ -74,17 +79,19 @@ class MovieDetailsActivity : AppCompatActivity() {
 
                     adapter = MovieAdapter(it) {
                         // TODO: 29/12/20  call details activity again (recursion)
-                        //val intent = MovieDetailsActivity.getStartIntent(this@MovieDetailsActivity,id)
-
-
+                        val intent = MovieDetailsActivity.getStartIntent(this@MovieDetailsActivity,it.id)
+                        startActivity(intent)
                     }
                 }
             }
         })
 
-//        star_button.setOnClickListener {
-//
-//        }
+        star_button.setOnClickListener {
+            viewModel.saveMovieDB(movieFavorites)
+            Toast.makeText(this,"Add to favorites",Toast.LENGTH_SHORT).show()
+            star_button.isLiked = true
+            star_button.setAnimationScaleFactor(5.toFloat())
+        }
     }
 
     companion object {
