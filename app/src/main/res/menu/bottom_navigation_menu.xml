@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/movieBottom"
+        android:id="@+id/homeBottom"
         android:enabled="true"
-        android:title="Movies" />
+        android:title="Home" />
 
+
+    <item
+        android:id="@+id/searchBottom"
+        android:title="Search"
+        android:enabled="true"
+        />
 
     <item
         android:id="@+id/favoritesBottom"
@@ -13,8 +19,8 @@
         />
 
     <item
-        android:id="@+id/seriesBottom"
-        android:title="Series"
+        android:id="@+id/settingsBottom"
+        android:title="Settings"
         android:enabled="true"
         />
 
