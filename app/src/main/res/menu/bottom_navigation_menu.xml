@@ -3,25 +3,29 @@
     <item
         android:id="@+id/homeBottom"
         android:enabled="true"
-        android:title="Home" />
+        android:title="Home"
+        android:icon="@drawable/ic_baseline_home_24_white"
+        />
 
 
     <item
         android:id="@+id/searchBottom"
         android:title="Search"
         android:enabled="true"
+        android:icon="@drawable/ic_baseline_search_24_white"
         />
 
     <item
         android:id="@+id/favoritesBottom"
         android:title="Favorites"
+        android:icon="@drawable/ic_baseline_favorite_24_white"
         android:enabled="true"
         />
 
-    <item
-        android:id="@+id/settingsBottom"
-        android:title="Settings"
-        android:enabled="true"
-        />
+<!--    <item-->
+<!--        android:id="@+id/settingsBottom"-->
+<!--        android:title="Settings"-->
+<!--        android:enabled="true"-->
+<!--        />-->
 
 </menu>

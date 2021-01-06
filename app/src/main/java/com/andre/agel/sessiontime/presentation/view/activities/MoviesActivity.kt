@@ -3,18 +3,11 @@ package com.andre.agel.sessiontime.presentation.view.activities
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Observer
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.andre.agel.sessiontime.R
-import com.andre.agel.sessiontime.presentation.view.adapter.MovieAdapter
 import com.andre.agel.sessiontime.presentation.view.fragments.FavoritesFragment
 import com.andre.agel.sessiontime.presentation.view.fragments.MovieFragment
 import com.andre.agel.sessiontime.presentation.viewModel.MoviesViewModel
-import com.bumptech.glide.Glide
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import kotlinx.android.synthetic.main.activity_details.*
-import kotlinx.android.synthetic.main.activity_main.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MoviesActivity : AppCompatActivity() {
@@ -33,7 +26,7 @@ class MoviesActivity : AppCompatActivity() {
             replace(R.id.fragment_container , movieFragment)
             commit()
         }
-        val bottomNavBar : BottomNavigationView =  findViewById(R.id.bottomNavBar)
+        val bottomNavBar : BottomNavigationView =  findViewById(R.id.bottom_navigation)
 
         bottomNavBar.setOnNavigationItemSelectedListener { item->
             when(item.itemId){
@@ -51,11 +44,8 @@ class MoviesActivity : AppCompatActivity() {
                     Log.i("favoritos", "favoritos")
                     supportFragmentManager.beginTransaction().apply {
                         replace(R.id.fragment_container , favoritesFragment )
+                        commit()
                     }
-                    true
-                }
-                R.id.settingsBottom ->{
-
                     true
                 }
                 else -> false

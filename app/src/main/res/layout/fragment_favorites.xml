@@ -5,13 +5,16 @@
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:layout_height="match_parent"
+    android:background="@color/project_background"
     tools:context=".presentation.view.fragments.FavoritesFragment">
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/textFavorites"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="8dp"
         android:text="Favorites"
         android:textColor="@color/white"
         android:textSize="18sp"
@@ -20,6 +23,7 @@
         tools:layout_editor_absoluteY="19dp" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rcFavoritesMovies"
         tools:listitem="@layout/item_recycler_list_img"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"

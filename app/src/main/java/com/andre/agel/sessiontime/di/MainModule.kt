@@ -3,6 +3,7 @@ package com.andre.agel.sessiontime.di
 import androidx.room.Room
 import com.andre.agel.sessiontime.data.database.AppDatabase
 import com.andre.agel.sessiontime.data.repository.MovieRepository
+import com.andre.agel.sessiontime.presentation.viewModel.FavoritesViewModel
 import com.andre.agel.sessiontime.presentation.viewModel.MovieDetailViewModel
 import com.andre.agel.sessiontime.presentation.viewModel.MoviesViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -22,7 +23,13 @@ val viewModelModule = module {
         )
     }
 
-    factory { MovieRepository(get(), get()) }
+    viewModel {
+        FavoritesViewModel(
+            MovieRepository(get(), get())
+        )
+    }
+
+    factory { MovieRepository(get(), get() ) }
 
     single { Room.databaseBuilder(
         get(),
@@ -31,6 +38,7 @@ val viewModelModule = module {
     ).build() }
     single { get<AppDatabase>().movieDao() }
     single { get<AppDatabase>().actorDao() }
+   // single { get<AppDatabase>().favoriteDao() }
 
 }
 

@@ -5,6 +5,7 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.andre.agel.sessiontime.data.database.dao.ActorDao
+import com.andre.agel.sessiontime.data.database.dao.FavoriteDao
 import com.andre.agel.sessiontime.data.database.dao.MovieDao
 import com.andre.agel.sessiontime.data.model.Actor
 import com.andre.agel.sessiontime.data.model.Movie
@@ -14,6 +15,7 @@ abstract class AppDatabase : RoomDatabase() {
 
     abstract fun movieDao() : MovieDao
     abstract fun actorDao() : ActorDao
+ //   abstract fun favoriteDao() : FavoriteDao
 
     companion object{
         @Volatile

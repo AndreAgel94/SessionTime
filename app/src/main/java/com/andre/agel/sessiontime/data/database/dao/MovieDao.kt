@@ -14,4 +14,7 @@ interface MovieDao {
 
     @Query("SELECT * FROM movie WHERE id = :id")
     suspend fun getMovieById(id : Int) : Movie
+
+    @Query("SELECT * FROM movie")
+    suspend fun getAllMovies() : List<Movie>
 }

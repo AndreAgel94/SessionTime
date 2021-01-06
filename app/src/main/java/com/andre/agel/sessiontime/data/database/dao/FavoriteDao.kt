@@ -9,10 +9,10 @@ import com.andre.agel.sessiontime.data.database.entity.FavoriteMovieEntity
 @Dao
 interface FavoriteDao {
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun saveFavorite(favorite : FavoriteMovieEntity)
-
-    @Query("SELECT * FROM favorites")
-    suspend fun getFavorites() : List<FavoriteMovieEntity>
+//    @Insert(onConflict = OnConflictStrategy.REPLACE)
+//    suspend fun saveFavorite(favorite : FavoriteMovieEntity)
+//
+//    @Query("SELECT * FROM favorites")
+//    suspend fun getFavorites() : List<FavoriteMovieEntity>
 
 }

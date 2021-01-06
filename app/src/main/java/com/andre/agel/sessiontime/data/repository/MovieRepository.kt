@@ -1,6 +1,5 @@
 package com.andre.agel.sessiontime.data.repository
 
-import android.provider.Settings
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.andre.agel.sessiontime.data.database.dao.ActorDao
@@ -8,20 +7,19 @@ import com.andre.agel.sessiontime.data.database.dao.FavoriteDao
 import com.andre.agel.sessiontime.data.database.dao.MovieDao
 import com.andre.agel.sessiontime.data.model.Actor
 import com.andre.agel.sessiontime.data.model.Movie
-import com.andre.agel.sessiontime.data.network.response.MovieResponse
 import com.andre.agel.sessiontime.data.network.ApiService
 import com.andre.agel.sessiontime.data.network.response.MovieCreditsResponse
+import com.andre.agel.sessiontime.data.network.response.MovieResponse
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import kotlin.math.log
 
 class MovieRepository (
     private val movieDao: MovieDao,
     private val actorDao: ActorDao,
-    private val favoriteDao: FavoriteDao
+   // private val favoriteDao: FavoriteDao
         ){
 
     val movieDetailsLD: MutableLiveData<Movie> = MutableLiveData()
@@ -33,13 +31,16 @@ class MovieRepository (
     val moviesRecommended: MutableLiveData<List<Movie>> = MutableLiveData()
     val movieActorsLD : MutableLiveData<List<Actor>> = MutableLiveData()
 
+    val allmoviesDB : MutableLiveData<List<Movie>> = MutableLiveData()
+
     fun saveMovieDB(movie: Movie){
 
         GlobalScope.launch { movieDao.save(movie) }
     }
 
-    fun saveActorDB(actor: Actor){
-        GlobalScope.launch { actorDao.save(actor) }
+    fun getAllMoviesDB(): MutableLiveData<List<Movie>> {
+        GlobalScope.launch { allmoviesDB.postValue(movieDao.getAllMovies()) }
+        return allmoviesDB
     }
 
     
