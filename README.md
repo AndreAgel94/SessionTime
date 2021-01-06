@@ -3,8 +3,8 @@
 ## Fique por dentro dos filmes mais populares, recentes e bem avaliados do mundo do cinema, avalie e favorite  
 
 <p float="left">
-  <img src="https://github.com/AndreAgel94/SessionTime/blob/dev/app/src/main/res/drawable/5.gif"/>
-  <img src="https://github.com/AndreAgel94/SessionTime/blob/dev/app/src/main/res/drawable/4.gif"/> 
+  <img src="https://github.com/AndreAgel94/SessionTime/blob/dev/app/src/main/res/drawable/c.gif"/>
+  <img src="https://github.com/AndreAgel94/SessionTime/blob/dev/app/src/main/res/drawable/b.gif"/> 
 </p>
 
 ### Projeto
