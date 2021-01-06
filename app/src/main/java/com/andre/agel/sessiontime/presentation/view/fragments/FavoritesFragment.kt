@@ -40,7 +40,7 @@ class FavoritesFragment : Fragment() {
                     with(rcFavoritesMovies){
                         layoutManager = GridLayoutManager(
                             activity,
-                            2
+                            3
                         )
                         setHasFixedSize(true)
 
