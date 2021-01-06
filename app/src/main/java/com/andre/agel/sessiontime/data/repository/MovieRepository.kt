@@ -4,6 +4,7 @@ import android.provider.Settings
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.andre.agel.sessiontime.data.database.dao.ActorDao
+import com.andre.agel.sessiontime.data.database.dao.FavoriteDao
 import com.andre.agel.sessiontime.data.database.dao.MovieDao
 import com.andre.agel.sessiontime.data.model.Actor
 import com.andre.agel.sessiontime.data.model.Movie
@@ -19,7 +20,8 @@ import kotlin.math.log
 
 class MovieRepository (
     private val movieDao: MovieDao,
-    private val actorDao: ActorDao
+    private val actorDao: ActorDao,
+    private val favoriteDao: FavoriteDao
         ){
 
     val movieDetailsLD: MutableLiveData<Movie> = MutableLiveData()
@@ -32,6 +34,7 @@ class MovieRepository (
     val movieActorsLD : MutableLiveData<List<Actor>> = MutableLiveData()
 
     fun saveMovieDB(movie: Movie){
+
         GlobalScope.launch { movieDao.save(movie) }
     }
 
