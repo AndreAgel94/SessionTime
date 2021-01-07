@@ -1,10 +1,20 @@
 # SessionTime
 
-## Fique por dentro dos filmes mais populares, recentes e bem avaliados do mundo do cinema, avalie e favorite  
+# Fique por dentro dos filmes mais populares, recentes e bem avaliados do mundo do cinema, avalie e favorite  
 
 <p float="left">
   <img src="https://github.com/AndreAgel94/SessionTime/blob/dev/app/src/main/res/drawable/c.gif"/>
   <img src="https://github.com/AndreAgel94/SessionTime/blob/dev/app/src/main/res/drawable/b.gif"/> 
+</p>
+
+## Versão2
+* Usando Room database para salvar os filmes preferidos do usuário
+* Tela de favoritos com Grid Layout\
+* Floating BottomNavBar
+
+<p float="left">
+  <img src="https://github.com/AndreAgel94/SessionTime/blob/dev/app/src/main/res/drawable/V2.gif"/>
+  <img src="https://github.com/AndreAgel94/SessionTime/blob/dev/app/src/main/res/drawable/FavoriteScreen.png" width="300px" height="605px"/> 
 </p>
 
 ### Projeto
@@ -27,6 +37,8 @@ memory and disk caching, and resource pooling into a simple and easy to use inte
 Create a List with RecyclerView
 * [LikeButton](https://github.com/jd-alexander/LikeButton)
 Cute Heart Like Button 
+* [Room](https://developer.android.com/jetpack/androidx/releases/room)
+The Room persistence library provides an abstraction layer over SQLite to allow for more robust database access while harnessing the full power of SQLite.
 
 ### Architecture
   * [MVVM with Android Architecture Components](https://developer.android.com/jetpack/docs/guide#recommended-app-arch)    
