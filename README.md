@@ -17,12 +17,13 @@
   <img src="https://github.com/AndreAgel94/SessionTime/blob/dev/app/src/main/res/drawable/FavoriteScreen.png" width="300px" height="605px"/> 
 </p>
 
-### Projeto
-O usuário pode ver uma lista dos filmes mais populares, atuais e bem avaliados do cinema, escolhendo
-um filme ele pode saber mais informação sobre, como sua sinopse, avaliação e elenco, podendo favoritar o filme,
-Utilizando a [The Movie Database](https://developer.marvel.com/) para a busca de dados.
-### Dependências 
+### Features
+* Descobrir os filmes mais populares e bem avaliados do cinema
+* Ver detalhes do filme como sinopse, elenco e avaliação
+* Favoritar filmes e tela de favoritos
 
+### Dependências 
+* [The Movie Database](https://developer.marvel.com/)
 * [Retrofit](https://square.github.io/retrofit/)
 A type-safe HTTP client for Android and Java
 * [Koin](https://insert-koin.io/)
