@@ -58,7 +58,7 @@ class MovieDetailsActivity : AppCompatActivity() {
             this@MovieDetailsActivity.movieFavorites = movie
 
             //Rating bar
-            val ratingValue : Float = movie.vote_average / 2
+            val ratingValue : Float = (movie.vote_average / 2).toFloat()
             ratingBarDetails.numStars = 5
             ratingBarDetails.rating = ratingValue
             textViewRatingValue.text = ratingValue.toString()

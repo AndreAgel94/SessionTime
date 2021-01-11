@@ -19,7 +19,6 @@ import retrofit2.Response
 class MovieRepository (
     private val movieDao: MovieDao,
     private val actorDao: ActorDao,
-   // private val favoriteDao: FavoriteDao
         ){
 
     val movieDetailsLD: MutableLiveData<Movie> = MutableLiveData()

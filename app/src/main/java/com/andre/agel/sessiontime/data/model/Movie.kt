@@ -4,7 +4,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "movie")
-data class Movie (
+data class Movie(
     val adult: Boolean,
 
     val backdrop_path: String,
@@ -30,7 +30,7 @@ data class Movie (
 
     val video: Boolean,
 
-    val vote_average: Float,
+    val vote_average: Double,
 
     val vote_count: Long
 )
