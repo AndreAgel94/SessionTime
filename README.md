@@ -13,8 +13,8 @@
 * Floating BottomNavBar
 
 <p float="left">
-  <img src="https://github.com/AndreAgel94/SessionTime/blob/dev/app/src/main/res/drawable/V2.gif"/>
-  <img src="https://github.com/AndreAgel94/SessionTime/blob/dev/app/src/main/res/drawable/FavoriteScreen.png" width="300px" height="605px"/> 
+  <img src="https://github.com/AndreAgel94/SessionTime/blob/dev/app/src/main/res/drawable/v2.gif"/>
+  <img src="https://github.com/AndreAgel94/SessionTime/blob/dev/app/src/main/res/drawable/favoritescreen.png" width="300px" height="605px"/> 
 </p>
 
 ### Features
