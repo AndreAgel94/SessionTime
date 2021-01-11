@@ -18,7 +18,7 @@ import retrofit2.Response
 
 class MovieRepository (
     private val movieDao: MovieDao,
-    private val actorDao: ActorDao,
+    private val actorDao: ActorDao
         ){
 
     val movieDetailsLD: MutableLiveData<Movie> = MutableLiveData()
@@ -28,6 +28,7 @@ class MovieRepository (
     val moviesPopularLD: MutableLiveData<List<Movie>> = MutableLiveData()
     val moviesPlayngLD: MutableLiveData<List<Movie>> = MutableLiveData()
     val moviesRecommended: MutableLiveData<List<Movie>> = MutableLiveData()
+    val moviesclassic: MutableLiveData<List<Movie>> = MutableLiveData()
     val movieActorsLD : MutableLiveData<List<Actor>> = MutableLiveData()
 
     val allmoviesDB : MutableLiveData<List<Movie>> = MutableLiveData()
@@ -109,6 +110,32 @@ class MovieRepository (
         return movieLatestLD
     }
 
+    fun getClassic(): MutableLiveData<List<Movie>> {
+        GlobalScope.launch {
+            ApiService.services.getMoviesClassic().enqueue(object : Callback<MovieResponse> {
+                override fun onResponse(
+                    call: Call<MovieResponse>,
+                    response: Response<MovieResponse>
+                ) {
+                    if (response.isSuccessful){
+                        response.body().let {
+                            if (it != null) {
+                                moviesclassic.value = it.results
+                                Log.i("classics", it.results.toString())
+                            }
+                        }
+                    }
+                }
+
+                override fun onFailure(call: Call<MovieResponse>, t: Throwable) {
+                    TODO("Not yet implemented")
+                }
+
+            })
+        }
+        return moviesclassic
+    }
+
     fun getUpcomingMovies(): MutableLiveData<List<Movie>> {
         GlobalScope.launch {
             ApiService.services.getUpcomingMovies().enqueue(object : Callback<MovieResponse> {
@@ -120,7 +147,6 @@ class MovieRepository (
                         response.body().let {
                             if (it != null) {
                                 moviesUpcomingLD.value = it.results
-                                Log.i("testeupcoming", it.results.toString())
 
                             }
                         }

@@ -10,6 +10,7 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.andre.agel.sessiontime.R
+import com.andre.agel.sessiontime.data.rand
 import com.andre.agel.sessiontime.presentation.view.activities.MovieDetailsActivity
 import com.andre.agel.sessiontime.presentation.view.adapter.MovieAdapter
 import com.andre.agel.sessiontime.presentation.viewModel.MoviesViewModel
@@ -34,22 +35,24 @@ class MovieFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+
+
         activity?.let {
-            viewModel.getLatestMovie().observe(it, Observer {
-                if(!it.adult){
+            viewModel.getClassic().observe(it, Observer {
+                val random = rand(0,20)
                     Glide
                         .with(requireActivity())
-                        .load("https://image.tmdb.org/t/p/w500" + it.poster_path )
+                        .load("https://image.tmdb.org/t/p/w500" + it[random].poster_path )
                         .centerCrop()
                         .into(imageLatestMovie)
-                    textViewLatestTitle.text = it.title
+                    textViewLatestTitle.text = it[random].title
                     //Log.i("poster_path",it.poster_path)
 
-                    imageLatestMovie.setOnClickListener {
-                        val intent = MovieDetailsActivity.getStartIntent(requireActivity(), it.id)
-                        activity?.startActivity(intent)
-                    }
-                }
+//                    imageLatestMovie.setOnClickListener {
+//                        val intent = MovieDetailsActivity.getStartIntent(requireActivity(), it.id)
+//                        activity?.startActivity(intent)
+//                    }
+
 
             })
         }
