@@ -31,6 +31,7 @@ class MoviesViewModel(
 
     fun getPupularMovies(): MutableLiveData<List<Movie>> {
         return repository.getPupularMovies()
+
     }
 
 }

@@ -39,13 +39,13 @@ class MovieFragment : Fragment() {
 
         activity?.let {
             viewModel.getClassic().observe(it, Observer {
-                val random = rand(0,20)
+                val random = rand(0,10)
                     Glide
                         .with(requireActivity())
-                        .load("https://image.tmdb.org/t/p/w500" + it[random].poster_path )
+                        .load("https://image.tmdb.org/t/p/w500" + it[0].poster_path )
                         .centerCrop()
                         .into(imageLatestMovie)
-                    textViewLatestTitle.text = it[random].title
+                    textViewLatestTitle.text = it[0].title
                     //Log.i("poster_path",it.poster_path)
 
 //                    imageLatestMovie.setOnClickListener {

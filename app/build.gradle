@@ -88,4 +88,9 @@ dependencies {
     testImplementation "android.arch.core:core-testing:1.1.1"
     testImplementation "org.koin:koin-test:$koin_version"
 
+    def android_arch_core_testing = '1.1.1'
+    def espresso_contrib = '3.2.0'
+    androidTestImplementation "android.arch.core:core-testing:$android_arch_core_testing"
+    androidTestImplementation "androidx.test.espresso:espresso-contrib:$espresso_contrib"
+
 }

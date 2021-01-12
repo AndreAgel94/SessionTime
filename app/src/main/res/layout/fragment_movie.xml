@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     tools:context=".presentation.view.activities.MoviesActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:id="@+id/fragment_movieid">
 
     <ScrollView
         android:layout_width="match_parent"

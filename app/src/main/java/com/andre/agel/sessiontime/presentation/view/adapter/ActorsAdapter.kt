@@ -9,9 +9,9 @@ import com.andre.agel.sessiontime.data.model.Actor
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.item_elenco.view.*
 
-class MovieDetailsAdapter(
+class ActorsAdapter(
     val actorsList : List<Actor>
-) : RecyclerView.Adapter<MovieDetailsAdapter.DetailsViewHolder>() {
+) : RecyclerView.Adapter<ActorsAdapter.DetailsViewHolder>() {
 
 
     override fun onCreateViewHolder(

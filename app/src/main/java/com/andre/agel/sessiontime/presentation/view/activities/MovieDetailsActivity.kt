@@ -12,11 +12,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.andre.agel.sessiontime.R
 import com.andre.agel.sessiontime.data.model.Movie
 import com.andre.agel.sessiontime.presentation.view.adapter.MovieAdapter
-import com.andre.agel.sessiontime.presentation.view.adapter.MovieDetailsAdapter
+import com.andre.agel.sessiontime.presentation.view.adapter.ActorsAdapter
 import com.andre.agel.sessiontime.presentation.viewModel.MovieDetailViewModel
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.activity_details.*
-import kotlinx.android.synthetic.main.movie_details.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MovieDetailsActivity : AppCompatActivity() {
@@ -39,7 +38,7 @@ class MovieDetailsActivity : AppCompatActivity() {
                         RecyclerView.HORIZONTAL,
                         false
                     )
-                    adapter = MovieDetailsAdapter(it)
+                    adapter = ActorsAdapter(it)
                 }
             }
         })

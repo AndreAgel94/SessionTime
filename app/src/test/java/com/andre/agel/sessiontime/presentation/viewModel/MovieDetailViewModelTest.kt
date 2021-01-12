@@ -1,8 +1,8 @@
 package com.andre.agel.sessiontime.presentation.viewModel
 
-import android.util.Log
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.MutableLiveData
+import com.andre.agel.sessiontime.data.model.Actor
 import com.andre.agel.sessiontime.data.model.Movie
 import com.andre.agel.sessiontime.data.repository.MovieRepository
 import com.andre.agel.sessiontime.resources.MockMovieTestResource.mockMovie
@@ -23,20 +23,25 @@ class MovieDetailViewModelTest{
     @Test
     fun `quando chamar viewModel getDetails, deve retornar Repository getDetails`(){
 
-        val mockedLiveData : MutableLiveData<Movie> = MutableLiveData()
-        var mockedMovieLiveData : MutableLiveData<Movie> = MutableLiveData()
+        val repositoryResponseLD : MutableLiveData<Movie> = MutableLiveData()
+        var viewModelresponseLD : MutableLiveData<Movie> = MutableLiveData()
 
-        mockedLiveData.value = mockMovie()
+        repositoryResponseLD.value = mockMovie()
 
-        every { mMovieRepository.getMovieDetails(150) } returns mockedLiveData
+        every { mMovieRepository.getMovieDetails(150) } returns repositoryResponseLD
         sut = MovieDetailViewModel(mMovieRepository)
 
-        mockedMovieLiveData = sut.getMovieDetails(150)
+        viewModelresponseLD = sut.getMovieDetails(150)
 
-        assertNotNull(mockedMovieLiveData)
-        assertEquals(mockedMovieLiveData,mockedLiveData)
+        assertNotNull(viewModelresponseLD)
+        assertEquals(viewModelresponseLD,repositoryResponseLD)
+    }
 
-        // preciso cirar um mutable para receber o getdetails do viewmodel, e depois verificar se ele
-        // é igual ao mutable que eu mockei na resposta do repository
+    @Test
+    fun `quando chamar viewmodel getActors, deve retornar Repository getActors`(){
+        val repositoryResponseLD : MutableLiveData<List<Actor>> = MutableLiveData()
+        var viewModelResponseLD : MutableLiveData<List<Actor>> = MutableLiveData()
+
+
     }
 }

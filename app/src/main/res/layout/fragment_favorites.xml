@@ -6,7 +6,8 @@
     android:orientation="vertical"
     android:layout_height="match_parent"
     android:background="@color/project_background"
-    tools:context=".presentation.view.fragments.FavoritesFragment">
+    tools:context=".presentation.view.fragments.FavoritesFragment"
+    android:id="@+id/fragment_favoritesid">
 
     <TextView
         android:id="@+id/textFavorites"

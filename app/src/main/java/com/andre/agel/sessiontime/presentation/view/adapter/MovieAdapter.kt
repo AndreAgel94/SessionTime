@@ -3,6 +3,7 @@ package com.andre.agel.sessiontime.presentation.view.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.andre.agel.sessiontime.R
 import com.andre.agel.sessiontime.data.model.Movie
@@ -34,11 +35,16 @@ class MovieAdapter(
     class MoviesViewHolder(
         itemView: View,
         private val OnItemClickListener : ((movie : Movie) -> Unit)
-    ) : RecyclerView.ViewHolder(itemView) {
+    ) : RecyclerView.ViewHolder(itemView) , View.OnLongClickListener {
+
+        init {
+            itemView.setOnLongClickListener(this)
+        }
 
         private val movieTitle = itemView.movieTitle
         private val movieDate = itemView.movieDate
         private val moviePoster = itemView.roundedImageView
+
 
         fun bind(movie : Movie){
 
@@ -54,6 +60,11 @@ class MovieAdapter(
             itemView.setOnClickListener {
                 OnItemClickListener.invoke(movie)
             }
+        }
+
+        override fun onLongClick(v: View): Boolean {
+            Toast.makeText(v.context, "long click", Toast.LENGTH_SHORT).show()
+            return true
         }
     }
 

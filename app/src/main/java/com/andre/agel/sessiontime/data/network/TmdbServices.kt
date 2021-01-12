@@ -26,7 +26,7 @@ interface TmdbServices {
         @Query("include_adult") include_adult : Boolean = false,
         @Query("include_video") include_video : Boolean = false,
         @Query("page") page : Int = 1,
-        @Query("primary_release_year") primary_release_year : Int = rand(1960,1990)
+        @Query("primary_release_year") primary_release_year : Int = rand(1960,1980)
     ): Call<MovieResponse>
 
 
