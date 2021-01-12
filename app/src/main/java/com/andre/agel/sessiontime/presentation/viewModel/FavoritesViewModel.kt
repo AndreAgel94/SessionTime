@@ -13,4 +13,8 @@ class FavoritesViewModel(
         return repository.getAllMoviesDB()
     }
 
+    fun deleteMovie(id:Int){
+        repository.deleteMovieDb(id)
+    }
+
 }

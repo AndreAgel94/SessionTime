@@ -34,8 +34,13 @@ class MovieRepository (
     val allmoviesDB : MutableLiveData<List<Movie>> = MutableLiveData()
 
     fun saveMovieDB(movie: Movie){
-
         GlobalScope.launch { movieDao.save(movie) }
+    }
+
+    fun deleteMovieDb(id: Int){
+        GlobalScope.launch {
+            movieDao.deleteMovie(id)
+        }
     }
 
     fun getAllMoviesDB(): MutableLiveData<List<Movie>> {
