@@ -5,7 +5,6 @@ import androidx.lifecycle.MutableLiveData
 import com.andre.agel.sessiontime.data.model.Actor
 import com.andre.agel.sessiontime.data.model.Movie
 import com.andre.agel.sessiontime.data.repository.MovieRepository
-import com.andre.agel.sessiontime.resources.MockMovieTestResource.mockMovie
 import io.mockk.every
 import io.mockk.mockk
 import org.junit.Assert.*
@@ -26,11 +25,8 @@ class MovieDetailViewModelTest{
         val repositoryResponseLD : MutableLiveData<Movie> = MutableLiveData()
         var viewModelresponseLD : MutableLiveData<Movie> = MutableLiveData()
 
-        repositoryResponseLD.value = mockMovie()
-
         every { mMovieRepository.getMovieDetails(150) } returns repositoryResponseLD
         sut = MovieDetailViewModel(mMovieRepository)
-
         viewModelresponseLD = sut.getMovieDetails(150)
 
         assertNotNull(viewModelresponseLD)
@@ -42,6 +38,28 @@ class MovieDetailViewModelTest{
         val repositoryResponseLD : MutableLiveData<List<Actor>> = MutableLiveData()
         var viewModelResponseLD : MutableLiveData<List<Actor>> = MutableLiveData()
 
+        every { mMovieRepository.getMovieActors(150) } returns repositoryResponseLD
+        sut = MovieDetailViewModel(mMovieRepository)
+        viewModelResponseLD = sut.getMovieActors(150)
+
+        assertNotNull(viewModelResponseLD)
+        assertEquals(viewModelResponseLD,repositoryResponseLD)
 
     }
+
+    @Test
+    fun `quando chamar viewmodel getRecomendations, deve retornar Repository getRecomendation`(){
+        val repositoryResponseLD : MutableLiveData<List<Movie>> = MutableLiveData()
+        var viewModelResponseLD : MutableLiveData<List<Movie>> = MutableLiveData()
+
+        every { mMovieRepository.getMoviesRecommendations(150) } returns repositoryResponseLD
+        sut = MovieDetailViewModel(mMovieRepository)
+        viewModelResponseLD = sut.getMoviesRecommendations(150)
+
+        assertNotNull(viewModelResponseLD)
+        assertEquals(viewModelResponseLD,repositoryResponseLD)
+
+    }
+
+
 }

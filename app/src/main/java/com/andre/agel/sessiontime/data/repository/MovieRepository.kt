@@ -8,6 +8,7 @@ import com.andre.agel.sessiontime.data.database.dao.MovieDao
 import com.andre.agel.sessiontime.data.model.Actor
 import com.andre.agel.sessiontime.data.model.Movie
 import com.andre.agel.sessiontime.data.network.ApiService
+import com.andre.agel.sessiontime.data.network.TmdbServices
 import com.andre.agel.sessiontime.data.network.response.MovieCreditsResponse
 import com.andre.agel.sessiontime.data.network.response.MovieResponse
 import kotlinx.coroutines.GlobalScope
@@ -18,7 +19,8 @@ import retrofit2.Response
 
 class MovieRepository (
     private val movieDao: MovieDao,
-    private val actorDao: ActorDao
+    private val actorDao: ActorDao,
+    private val tmdb : TmdbServices
         ){
 
     val movieDetailsLD: MutableLiveData<Movie> = MutableLiveData()
@@ -52,7 +54,7 @@ class MovieRepository (
 
     fun getMovieDetails(id : Int): MutableLiveData<Movie> {
         GlobalScope.launch {
-            ApiService.services.getMovieDetails(id).enqueue(object : Callback<Movie> {
+            tmdb.getMovieDetails(id).enqueue(object : Callback<Movie> {
                 override fun onResponse(call: Call<Movie>, response: Response<Movie>) {
                     if (response.isSuccessful) {
                         response.body().let {
@@ -72,7 +74,7 @@ class MovieRepository (
 
     fun getTopRatedMovies(): MutableLiveData<List<Movie>> {
         GlobalScope.launch {
-            ApiService.services.getTopRatedMovies().enqueue(object : Callback<MovieResponse> {
+            tmdb.getTopRatedMovies().enqueue(object : Callback<MovieResponse> {
                 override fun onResponse(
                     call: Call<MovieResponse>,
                     response: Response<MovieResponse>
@@ -98,7 +100,7 @@ class MovieRepository (
 
     fun getLatestMovie(): MutableLiveData<Movie> {
         GlobalScope.launch {
-            ApiService.services.getLatestMovie().enqueue(object : Callback<Movie> {
+            tmdb.getLatestMovie().enqueue(object : Callback<Movie> {
                 override fun onResponse(call: Call<Movie>, response: Response<Movie>) {
                     if (response.isSuccessful) {
                         response.body().let {
@@ -117,7 +119,7 @@ class MovieRepository (
 
     fun getClassic(): MutableLiveData<List<Movie>> {
         GlobalScope.launch {
-            ApiService.services.getMoviesClassic().enqueue(object : Callback<MovieResponse> {
+            tmdb.getMoviesClassic().enqueue(object : Callback<MovieResponse> {
                 override fun onResponse(
                     call: Call<MovieResponse>,
                     response: Response<MovieResponse>
@@ -143,7 +145,7 @@ class MovieRepository (
 
     fun getUpcomingMovies(): MutableLiveData<List<Movie>> {
         GlobalScope.launch {
-            ApiService.services.getUpcomingMovies().enqueue(object : Callback<MovieResponse> {
+            tmdb.getUpcomingMovies().enqueue(object : Callback<MovieResponse> {
                 override fun onResponse(
                     call: Call<MovieResponse>,
                     response: Response<MovieResponse>
@@ -170,7 +172,7 @@ class MovieRepository (
 
     fun getPupularMovies(): MutableLiveData<List<Movie>> {
         GlobalScope.launch {
-            ApiService.services.getPupularMovies().enqueue(object : Callback<MovieResponse> {
+            tmdb.getPupularMovies().enqueue(object : Callback<MovieResponse> {
                 override fun onResponse(
                     call: Call<MovieResponse>,
                     response: Response<MovieResponse>
@@ -198,7 +200,7 @@ class MovieRepository (
 
     fun getNowPlayingMovies(): MutableLiveData<List<Movie>> {
         GlobalScope.launch {
-            ApiService.services.getNowPlayingMovies().enqueue(object : Callback<MovieResponse> {
+            tmdb.getNowPlayingMovies().enqueue(object : Callback<MovieResponse> {
                 override fun onResponse(
                     call: Call<MovieResponse>,
                     response: Response<MovieResponse>
@@ -226,7 +228,7 @@ class MovieRepository (
 
     fun getMoviesRecommendations(id: Int) : MutableLiveData<List<Movie>>{
         GlobalScope.launch {
-            ApiService.services.getMoviesRecommendations(id).enqueue(object : Callback<MovieResponse>{
+            tmdb.getMoviesRecommendations(id).enqueue(object : Callback<MovieResponse>{
                 override fun onResponse(
                     call: Call<MovieResponse>,
                     response: Response<MovieResponse>
@@ -252,7 +254,7 @@ class MovieRepository (
 
     fun getMovieActors(id : Int): MutableLiveData<List<Actor>> {
         GlobalScope.launch {
-            ApiService.services.getMovieCredits(id).enqueue(object : Callback<MovieCreditsResponse> {
+            tmdb.getMovieCredits(id).enqueue(object : Callback<MovieCreditsResponse> {
                 override fun onResponse(
                     call: Call<MovieCreditsResponse>,
                     response: Response<MovieCreditsResponse>

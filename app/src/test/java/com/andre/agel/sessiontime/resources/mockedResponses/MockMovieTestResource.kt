@@ -1,4 +1,4 @@
-package com.andre.agel.sessiontime.resources
+package com.andre.agel.sessiontime.resources.mockedResponses
 
 import androidx.lifecycle.MutableLiveData
 import com.andre.agel.sessiontime.data.model.Movie

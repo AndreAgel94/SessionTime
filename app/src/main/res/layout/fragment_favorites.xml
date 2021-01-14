@@ -18,7 +18,7 @@
         android:layout_marginBottom="8dp"
         android:text="Favorites"
         android:textColor="@color/white"
-        android:textSize="18sp"
+        android:textSize="22sp"
         android:textStyle="bold"
         tools:layout_editor_absoluteX="18dp"
         tools:layout_editor_absoluteY="19dp" />
