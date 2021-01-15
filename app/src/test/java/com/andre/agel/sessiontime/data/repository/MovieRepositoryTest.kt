@@ -1,29 +1,20 @@
 package com.andre.agel.sessiontime.data.repository
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import androidx.lifecycle.MutableLiveData
 import com.andre.agel.sessiontime.data.database.dao.ActorDao
 import com.andre.agel.sessiontime.data.database.dao.MovieDao
-import com.andre.agel.sessiontime.data.model.Movie
 import com.andre.agel.sessiontime.data.network.TmdbServices
 import com.andre.agel.sessiontime.resources.base.BaseTest
 import com.andre.agel.sessiontime.resources.mockedResponses.MockMovieTestResource
-import com.andre.agel.sessiontime.resources.mockedResponses.MockResponseFileReader
-import com.google.gson.Gson
-import io.mockk.MockKAnnotations
-import io.mockk.coEvery
 import io.mockk.every
 import io.mockk.mockk
 import kotlinx.coroutines.runBlocking
-import okhttp3.mockwebserver.MockResponse
-import okhttp3.mockwebserver.MockWebServer
-import org.junit.After
-import org.junit.Assert.*
+import org.junit.Assert.assertEquals
+import org.junit.Assert.assertNotNull
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
+import java.lang.Thread.sleep
 import java.net.HttpURLConnection
 
 class MovieRepositoryTest : BaseTest() {
@@ -46,23 +37,115 @@ class MovieRepositoryTest : BaseTest() {
     }
 
     @Test
-    fun `metodo getMovieDetails deve retornar um mutableLivedata de movie da API`() = runBlocking{
-        val data : MutableLiveData<Movie> = MutableLiveData()
-        data.value = MockMovieTestResource.mockMovie()
+    fun `metodo getMovieDetails deve retornar um mutableLivedata de movie da API`() {
 
-       // val dataRecived : MutableLiveData<Movie> = MutableLiveData()
+        val data = MockMovieTestResource.mockMovie()
 
         mockNetworkResponseWithFileContent("movieDetails.json", HttpURLConnection.HTTP_OK)
         sut = MovieRepository(mMovieDao, mActorDao,createApi())
 
-       // coEvery { sut.getMovieDetails(150) } returns dataRecived
+        val dataReceived = sut.getMovieDetails(150)
 
-        val dataRecived : MutableLiveData<Movie> = sut.getMovieDetails(150)
-
-        assertNotNull(dataRecived)
-        assertEquals(dataRecived.value?.id , data.value?.id)
+        assertNotNull(dataReceived)
+        sleep(500)
+        assertEquals(dataReceived.value?.id , data.value?.id)
 
     }
 
+    @Test
+    fun `metodo getTopRatedMovies deve retornar um mutableLivedata de movies da API`() {
+
+        val data = MockMovieTestResource.mockMoviesList()
+
+        mockNetworkResponseWithFileContent("movieList.json", HttpURLConnection.HTTP_OK)
+        sut = MovieRepository(mMovieDao, mActorDao,createApi())
+
+        val dataReceived = sut.getTopRatedMovies()
+
+        assertNotNull(dataReceived)
+        sleep(500)
+        assertEquals(dataReceived.value?.get(1)?.id, data.value?.get(1)?.id)
+
+    }
+
+    @Test
+    fun `metodo getClassic deve retornar um mutableLivedata de movies da API`() {
+
+        val data = MockMovieTestResource.mockMoviesList()
+
+        mockNetworkResponseWithFileContent("movieList.json", HttpURLConnection.HTTP_OK)
+        sut = MovieRepository(mMovieDao, mActorDao,createApi())
+
+        val dataReceived = sut.getClassic()
+
+        assertNotNull(dataReceived)
+        sleep(500)
+        assertEquals(dataReceived.value?.get(1)?.id, data.value?.get(1)?.id)
+
+    }
+
+    @Test
+    fun `metodo getUpcoming deve retornar um mutableLivedata de movies da API`() {
+
+        val data = MockMovieTestResource.mockMoviesList()
+
+        mockNetworkResponseWithFileContent("movieList.json", HttpURLConnection.HTTP_OK)
+        sut = MovieRepository(mMovieDao, mActorDao,createApi())
+
+        val dataReceived = sut.getUpcomingMovies()
+
+        assertNotNull(dataReceived)
+        sleep(500)
+        assertEquals(dataReceived.value?.get(1)?.id, data.value?.get(1)?.id)
+
+    }
+
+    @Test
+    fun `metodo getPopular deve retornar um mutableLivedata de movies da API`() {
+
+        val data = MockMovieTestResource.mockMoviesList()
+
+        mockNetworkResponseWithFileContent("movieList.json", HttpURLConnection.HTTP_OK)
+        sut = MovieRepository(mMovieDao, mActorDao,createApi())
+
+        val dataReceived = sut.getPupularMovies()
+
+        assertNotNull(dataReceived)
+        sleep(500)
+        assertEquals(dataReceived.value?.get(1)?.id, data.value?.get(1)?.id)
+
+    }
+
+    @Test
+    fun `metodo getNowPlayng deve retornar um mutableLivedata de movies da API`() {
+
+        val data = MockMovieTestResource.mockMoviesList()
+
+        mockNetworkResponseWithFileContent("movieList.json", HttpURLConnection.HTTP_OK)
+        sut = MovieRepository(mMovieDao, mActorDao,createApi())
+
+        val dataReceived = sut.getNowPlayingMovies()
+
+        assertNotNull(dataReceived)
+        sleep(500)
+        assertEquals(dataReceived.value?.get(1)?.id, data.value?.get(1)?.id)
+
+    }
+
+    @Test
+    fun `metodo getRecomendations deve retornar um mutableLivedata de movies da API`() {
+
+        val data = MockMovieTestResource.mockMoviesList()
+
+        mockNetworkResponseWithFileContent("movieList.json", HttpURLConnection.HTTP_OK)
+        sut = MovieRepository(mMovieDao, mActorDao,createApi())
+
+        val dataReceived = sut.getMoviesRecommendations(150)
+
+        assertNotNull(dataReceived)
+        sleep(500)
+        assertEquals(dataReceived.value?.get(1)?.id, data.value?.get(1)?.id)
+
+    }
 
 }

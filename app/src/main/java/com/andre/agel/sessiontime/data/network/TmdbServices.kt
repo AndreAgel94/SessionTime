@@ -15,8 +15,8 @@ interface TmdbServices {
 
     //BASE_URL https://api.themoviedb.org/3/
 
-    //https://api.themoviedb.org/3/discover/movie?api_key=90ba7fba1e3a871fcf6ea0e3f4afc1f8&language=en-US
-    // &sort_by=popularity.desc&include_adult=false&include_video=false&page=1&primary_release_year=1960
+//    https://api.themoviedb.org/3/discover/movie?api_key=90ba7fba1e3a871fcf6ea0e3f4afc1f8&language=en-US
+//     &sort_by=popularity.desc&include_adult=false&include_video=false&page=1&primary_release_year=1960
 
     @GET("discover/movie")
     fun getMoviesClassic(

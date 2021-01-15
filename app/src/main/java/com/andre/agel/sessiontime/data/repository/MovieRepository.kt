@@ -1,13 +1,10 @@
 package com.andre.agel.sessiontime.data.repository
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.andre.agel.sessiontime.data.database.dao.ActorDao
-import com.andre.agel.sessiontime.data.database.dao.FavoriteDao
 import com.andre.agel.sessiontime.data.database.dao.MovieDao
 import com.andre.agel.sessiontime.data.model.Actor
 import com.andre.agel.sessiontime.data.model.Movie
-import com.andre.agel.sessiontime.data.network.ApiService
 import com.andre.agel.sessiontime.data.network.TmdbServices
 import com.andre.agel.sessiontime.data.network.response.MovieCreditsResponse
 import com.andre.agel.sessiontime.data.network.response.MovieResponse
@@ -17,11 +14,11 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class MovieRepository (
+class MovieRepository(
     private val movieDao: MovieDao,
     private val actorDao: ActorDao,
-    private val tmdb : TmdbServices
-        ){
+    private val tmdb: TmdbServices
+) {
 
     val movieDetailsLD: MutableLiveData<Movie> = MutableLiveData()
     val moviesTopRatedLD: MutableLiveData<List<Movie>> = MutableLiveData()
@@ -31,15 +28,15 @@ class MovieRepository (
     val moviesPlayngLD: MutableLiveData<List<Movie>> = MutableLiveData()
     val moviesRecommended: MutableLiveData<List<Movie>> = MutableLiveData()
     val moviesclassic: MutableLiveData<List<Movie>> = MutableLiveData()
-    val movieActorsLD : MutableLiveData<List<Actor>> = MutableLiveData()
+    val movieActorsLD: MutableLiveData<List<Actor>> = MutableLiveData()
 
-    val allmoviesDB : MutableLiveData<List<Movie>> = MutableLiveData()
+    val allmoviesDB: MutableLiveData<List<Movie>> = MutableLiveData()
 
-    fun saveMovieDB(movie: Movie){
+    fun saveMovieDB(movie: Movie) {
         GlobalScope.launch { movieDao.save(movie) }
     }
 
-    fun deleteMovieDb(id: Int){
+    fun deleteMovieDb(id: Int) {
         GlobalScope.launch {
             movieDao.deleteMovie(id)
         }
@@ -50,24 +47,23 @@ class MovieRepository (
         return allmoviesDB
     }
 
-    
 
-    fun getMovieDetails(id : Int): MutableLiveData<Movie> {
-        GlobalScope.launch {
-            tmdb.getMovieDetails(id).enqueue(object : Callback<Movie> {
-                override fun onResponse(call: Call<Movie>, response: Response<Movie>) {
-                    if (response.isSuccessful) {
-                        response.body().let {
-                            movieDetailsLD.value = it
-                        }
+    fun getMovieDetails(id: Int): MutableLiveData<Movie> {
+
+        tmdb.getMovieDetails(id).enqueue(object : Callback<Movie> {
+            override fun onResponse(call: Call<Movie>, response: Response<Movie>) {
+                if (response.isSuccessful) {
+                    response.body().let {
+                        movieDetailsLD.value = it
                     }
                 }
+            }
 
-                override fun onFailure(call: Call<Movie>, t: Throwable) {
-                    TODO("Not yet implemented")
-                }
-            })
-        }
+            override fun onFailure(call: Call<Movie>, t: Throwable) {
+                TODO("Not yet implemented")
+            }
+        })
+
 
         return movieDetailsLD
     }
@@ -98,24 +94,6 @@ class MovieRepository (
         return moviesTopRatedLD
     }
 
-    fun getLatestMovie(): MutableLiveData<Movie> {
-        GlobalScope.launch {
-            tmdb.getLatestMovie().enqueue(object : Callback<Movie> {
-                override fun onResponse(call: Call<Movie>, response: Response<Movie>) {
-                    if (response.isSuccessful) {
-                        response.body().let {
-                            movieLatestLD.value = it
-                        }
-                    }
-                }
-
-                override fun onFailure(call: Call<Movie>, t: Throwable) {
-                    TODO("Not yet implemented")
-                }
-            })
-        }
-        return movieLatestLD
-    }
 
     fun getClassic(): MutableLiveData<List<Movie>> {
         GlobalScope.launch {
@@ -124,11 +102,10 @@ class MovieRepository (
                     call: Call<MovieResponse>,
                     response: Response<MovieResponse>
                 ) {
-                    if (response.isSuccessful){
+                    if (response.isSuccessful) {
                         response.body().let {
                             if (it != null) {
                                 moviesclassic.value = it.results
-                                Log.i("classics", it.results.toString())
                             }
                         }
                     }
@@ -181,8 +158,6 @@ class MovieRepository (
                         response.body().let {
                             if (it != null) {
                                 moviesPopularLD.value = it.results
-                                Log.i("teste3", it.results.size.toString())
-
                             }
                         }
                     }
@@ -209,7 +184,7 @@ class MovieRepository (
                         response.body().let {
                             if (it != null) {
                                 moviesPlayngLD.value = it.results
-                                Log.i("teste4", it.results.size.toString())
+
 
                             }
                         }
@@ -226,18 +201,18 @@ class MovieRepository (
         return moviesPlayngLD
     }
 
-    fun getMoviesRecommendations(id: Int) : MutableLiveData<List<Movie>>{
+    fun getMoviesRecommendations(id: Int): MutableLiveData<List<Movie>> {
         GlobalScope.launch {
-            tmdb.getMoviesRecommendations(id).enqueue(object : Callback<MovieResponse>{
+            tmdb.getMoviesRecommendations(id).enqueue(object : Callback<MovieResponse> {
                 override fun onResponse(
                     call: Call<MovieResponse>,
                     response: Response<MovieResponse>
                 ) {
-                    if (response.isSuccessful){
+                    if (response.isSuccessful) {
                         response.body().let {
                             if (it != null) {
                                 moviesRecommended.value = it.results
-                                Log.i("recomended" , it.results.toString())
+
                             }
                         }
                     }
@@ -252,14 +227,14 @@ class MovieRepository (
         return moviesRecommended
     }
 
-    fun getMovieActors(id : Int): MutableLiveData<List<Actor>> {
+    fun getMovieActors(id: Int): MutableLiveData<List<Actor>> {
         GlobalScope.launch {
             tmdb.getMovieCredits(id).enqueue(object : Callback<MovieCreditsResponse> {
                 override fun onResponse(
                     call: Call<MovieCreditsResponse>,
                     response: Response<MovieCreditsResponse>
                 ) {
-                    if (response.isSuccessful){
+                    if (response.isSuccessful) {
                         response.body().let {
                             if (it != null) {
                                 movieActorsLD.value = it.cast
@@ -276,7 +251,6 @@ class MovieRepository (
 
             })
         }
-
         return movieActorsLD
     }
 }
