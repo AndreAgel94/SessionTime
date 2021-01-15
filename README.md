@@ -40,6 +40,10 @@ Create a List with RecyclerView
 Cute Heart Like Button 
 * [Room](https://developer.android.com/jetpack/androidx/releases/room)
 The Room persistence library provides an abstraction layer over SQLite to allow for more robust database access while harnessing the full power of SQLite.
+* [Espresso](https://developer.android.com/training/testing/espresso)
+Use Espresso to write concise, beautiful, and reliable Android UI tests.
+* [JUnit](https://junit.org/junit4/)
+JUnit is a simple framework to write repeatable tests. It is an instance of the xUnit architecture for unit testing frameworks.
 
 ### Architecture
   * [MVVM with Android Architecture Components](https://developer.android.com/jetpack/docs/guide#recommended-app-arch)    
